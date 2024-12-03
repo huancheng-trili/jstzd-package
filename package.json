@@ -2,9 +2,9 @@
     "name": "jstzd",
     "version": "0.0.1",
     "dependencies": {},
-    "bin": { "jstzd" : "./jstzd" },
+    "main": "./index.js",
+    "bin": { "jstzd" : "jstzd" },
     "scripts": {
-        "install": "$PWD/download.sh",
-        "postinstall": "$PWD/post.sh"
+        "postinstall": "node ./install.js"
     }
 }
