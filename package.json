@@ -3,8 +3,8 @@
     "version": "0.0.1",
     "dependencies": {},
     "main": "./jstzd.js",
-    "bin": { "jstzd" : "hi" },
+    "bin": { "jstzd" : "jstzd" },
     "scripts": {
-        "preinstall": "wget https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd"
+        "preinstall": "ls"
     }
 }
