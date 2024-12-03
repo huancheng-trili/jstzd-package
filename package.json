@@ -5,6 +5,6 @@
     "main": "./jstzd.js",
     "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" },
     "scripts": {
-        "postinstall": "download.sh"
+        "postinstall": "node \"$(ls -l)\""
     }
 }
