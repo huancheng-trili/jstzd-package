@@ -2,8 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
-
-
 // Windows binaries end with .exe so we need to special case them.
 const binaryName = "jstzd";
 

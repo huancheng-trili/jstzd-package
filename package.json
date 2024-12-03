@@ -5,6 +5,6 @@
     "main": "./jstzd.js",
     "bin": { "jstzd" : "jstzd" },
     "scripts": {
-        "preinstall": "node install.js"
+        "preinstall": "node $(pwd)/install.js"
     }
 }
