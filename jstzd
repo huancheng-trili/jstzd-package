@@ -71,6 +71,7 @@ async function downloadBinaryFromNpm() {
 console.log(getBinaryPath());
 if (!fs.existsSync(getBinaryPath())) {
   await downloadBinaryFromNpm();
+  console.log('done')
 }
 
 childProcess.execFileSync(getBinaryPath(), process.argv.slice(2), {
