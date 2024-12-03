@@ -67,4 +67,4 @@ function isPlatformSpecificPackageInstalled() {
   }
 }
 
-downloadBinaryFromNpm();
+//downloadBinaryFromNpm();

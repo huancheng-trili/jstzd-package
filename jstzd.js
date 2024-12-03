@@ -16,6 +16,8 @@ function getBinaryPath() {
 }
 
 module.exports.runBinary = function (...args) {
+  console.log(getBinaryPath());
+  foobar;
   childProcess.execFileSync(getBinaryPath(), args, {
     stdio: "inherit",
   });
