@@ -4,7 +4,7 @@
     "dependencies": {},
     "bin": { "jstzd" : "./jstzd" },
     "scripts": {
-        "install": "sh ./download.sh",
-        "postinstall": "sh ./post.sh"
+        "install": "download.sh",
+        "postinstall": "post.sh"
     }
 }
