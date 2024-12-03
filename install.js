@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/*
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
@@ -68,3 +69,6 @@ function isPlatformSpecificPackageInstalled() {
 }
 
 downloadBinaryFromNpm();
+*/
+
+console.log('hi');
