@@ -5,6 +5,6 @@
     "main": "./jstzd.js",
     "bin": { "jstzd" : "jstzd" },
     "scripts": {
-        "preinstall": "ls"
+        "postinstall": "ls"
     }
 }
