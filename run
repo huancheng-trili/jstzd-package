@@ -8,7 +8,7 @@ import { exit } from "process";
 const __dirname = import.meta.dirname;
 
 // Windows binaries end with .exe so we need to special case them.
-const binaryName = "jstzd-bin";
+const binaryName = "jstzd";
 
 function getBinaryPath() {
   try {
@@ -70,7 +70,6 @@ async function downloadBinaryFromNpm() {
   fs.chmodSync(fallbackBinaryPath, "755");
 }
 
-console.log(getBinaryPath());
 if (!fs.existsSync(getBinaryPath())) {
   await downloadBinaryFromNpm();
 }
@@ -80,6 +79,9 @@ try {
     stdio: "inherit",
   });
 } catch (e) {
-  console.log(e.status)
-  exit(e.status);
+  if (e.code) {
+    exit(1);
+  } else {
+    exit(e.status);
+  }
 }

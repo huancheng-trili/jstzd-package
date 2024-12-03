@@ -2,5 +2,5 @@
     "name": "jstzd",
     "version": "0.0.1",
     "dependencies": {},
-    "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" }
+    "bin": { "jstzd" : "run", "jstzd-bin": "jstzd-bin" }
 }
