@@ -3,8 +3,5 @@
     "version": "0.0.1",
     "dependencies": {},
     "main": "./jstzd.js",
-    "bin": { "jstzd" : "jstzd" },
-    "scripts": {
-        "postinstall": "node ./install.js"
-    }
+    "bin": { "jstzd" : "jstzd" }
 }
