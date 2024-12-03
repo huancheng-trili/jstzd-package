@@ -4,7 +4,7 @@ const path = require("path");
 const childProcess = require("child_process");
 
 // Windows binaries end with .exe so we need to special case them.
-const binaryName = "jstzd";
+const binaryName = "jstzd-bin";
 
 function getBinaryPath() {
   try {
