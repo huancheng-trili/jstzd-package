@@ -2,8 +2,5 @@
     "name": "jstzd",
     "version": "0.0.1",
     "dependencies": {},
-    "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" },
-    "scripts": {
-        "install": "node ./install.js"
-    }
+    "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" }
 }

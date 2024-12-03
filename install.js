@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-/*
+
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
 
 // Windows binaries end with .exe so we need to special case them.
-const binaryName = "jstzd";
+const binaryName = "jstzd-bin";
 
 
 // Compute the path we want to emit the fallback binary to
@@ -69,6 +69,5 @@ function isPlatformSpecificPackageInstalled() {
 }
 
 downloadBinaryFromNpm();
-*/
 
 console.log('hi');

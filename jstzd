@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const fs = require("fs");
+const https = require("https");
 const path = require("path");
 const childProcess = require("child_process");
 
@@ -15,8 +17,61 @@ function getBinaryPath() {
   }
 }
 
-module.exports.runBinary = function (...args) {
-  childProcess.execFileSync(getBinaryPath(), args, {
-    stdio: "inherit",
+
+// Compute the path we want to emit the fallback binary to
+const fallbackBinaryPath = path.join(__dirname, binaryName);
+
+function makeRequest(url) {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, (response) => {
+        if (response.statusCode >= 200 && response.statusCode < 300) {
+          const chunks = [];
+          response.on("data", (chunk) => chunks.push(chunk));
+          response.on("end", () => {
+            resolve(Buffer.concat(chunks));
+          });
+        } else if (
+          response.statusCode >= 300 &&
+          response.statusCode < 400 &&
+          response.headers.location
+        ) {
+          // Follow redirects
+          makeRequest(response.headers.location).then(resolve, reject);
+        } else {
+          reject(
+            new Error(
+              `npm responded with status code ${response.statusCode} when downloading the package!`
+            )
+          );
+        }
+      })
+      .on("error", (error) => {
+        reject(error);
+      });
   });
-};
+}
+
+async function downloadBinaryFromNpm() {
+  // Download the tarball of the right binary distribution package
+  const downloadBuffer = await makeRequest(
+    `https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd`
+  );
+
+  // Extract binary from package and write to disk
+  fs.writeFileSync(
+    fallbackBinaryPath,
+    downloadBuffer
+  );
+
+  // Make binary executable
+  fs.chmodSync(fallbackBinaryPath, "755");
+}
+
+if (!fs.existsSync(getBinaryPath())) {
+  downloadBinaryFromNpm();
+}
+
+childProcess.execFileSync(getBinaryPath(), args, {
+  stdio: "inherit",
+});
