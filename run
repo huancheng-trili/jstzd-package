@@ -7,6 +7,8 @@ import childProcess from "child_process";
 import { exit } from "process";
 const __dirname = import.meta.dirname;
 
+process.env["PATH"] += path.delimiter + __dirname + path.sep + "bin"
+
 // Windows binaries end with .exe so we need to special case them.
 const binaryName = "jstzd";
 
@@ -15,13 +17,13 @@ function getBinaryPath() {
     // Resolving will fail if the optionalDependency was not installed
     return require.resolve(`${binaryName}`);
   } catch (e) {
-    return path.join(__dirname, binaryName);
+    return path.join(__dirname, "bin", binaryName);
   }
 }
 
 
 // Compute the path we want to emit the fallback binary to
-const fallbackBinaryPath = path.join(__dirname, binaryName);
+const fallbackBinaryPath = path.join(__dirname, "bin", binaryName);
 
 function makeRequest(url) {
   return new Promise((resolve, reject) => {
@@ -68,6 +70,50 @@ async function downloadBinaryFromNpm() {
 
   // Make binary executable
   fs.chmodSync(fallbackBinaryPath, "755");
+
+  // octez-node
+  let downloadBuffer2 = await makeRequest(
+    `https://gitlab.com/tezos/tezos/-/package_files/159439159/download`
+  );
+
+  // Extract binary from package and write to disk
+  fs.writeFileSync(
+    path.join(__dirname, "bin", "octez-node"),
+    downloadBuffer2
+  );
+
+  // Make binary executable
+  fs.chmodSync(path.join(__dirname, "bin", "octez-node"), "755");
+
+
+  // octez-client
+  let downloadBuffer3 = await makeRequest(
+    `https://gitlab.com/tezos/tezos/-/package_files/159439006/download`
+  );
+
+  // Extract binary from package and write to disk
+  fs.writeFileSync(
+    path.join(__dirname, "bin", "octez-client"),
+    downloadBuffer3
+  );
+
+  // Make binary executable
+  fs.chmodSync(path.join(__dirname, "bin", "octez-client"), "755");
+
+
+  // baker
+  let downloadBuffer4 = await makeRequest(
+    `https://gitlab.com/tezos/tezos/-/package_files/159439265/download`
+  );
+
+  // Extract binary from package and write to disk
+  fs.writeFileSync(
+    path.join(__dirname, "bin", "octez-baker-PsParisC"),
+    downloadBuffer4
+  );
+
+  // Make binary executable
+  fs.chmodSync(path.join(__dirname, "bin", "octez-PsParisC"), "755");
 }
 
 if (!fs.existsSync(getBinaryPath())) {
