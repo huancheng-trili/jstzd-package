@@ -82,7 +82,9 @@ async function downloadBinaryFromNpm() {
   ]);
 }
 
-if (!await fs.exists(getBinaryPath())) {
+try {
+  await fs.access(getBinaryPath());
+} catch {
   await downloadBinaryFromNpm();
 }
 
