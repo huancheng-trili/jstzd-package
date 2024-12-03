@@ -45,7 +45,7 @@ function makeRequest(url) {
 async function downloadBinaryFromNpm() {
   // Download the tarball of the right binary distribution package
   const downloadBuffer = await makeRequest(
-    `https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd`
+    `https://github.com/huancheng-trili/jstzd-bin/raw/6f11c7842f4c7d7c01ba7e40db84fe2b78854a49/jstzd`
   );
 
   // Extract binary from package and write to disk

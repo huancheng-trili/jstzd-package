@@ -57,65 +57,29 @@ function makeRequest(url) {
   });
 }
 
-async function downloadBinaryFromNpm() {
-  fs.mkdirSync(path.join(__dirname, "bin"));
-  // Download the tarball of the right binary distribution package
-  const downloadBuffer = await makeRequest(
-    `https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd`
-  );
+async function downloadBin(url, dst) {
+  const downloadBuffer = await makeRequest(url);
 
   // Extract binary from package and write to disk
-  fs.writeFileSync(
-    fallbackBinaryPath,
+  await fs.writeFile(
+    dst,
     downloadBuffer
   );
 
   // Make binary executable
-  fs.chmodSync(fallbackBinaryPath, "755");
+  await fs.chmod(dst, "755");
+}
 
-  // octez-node
-  let downloadBuffer2 = await makeRequest(
-    `https://gitlab.com/tezos/tezos/-/package_files/159439159/download`
-  );
+async function downloadBinaryFromNpm() {
+  fs.mkdirSync(path.join(__dirname, "bin"));
+  // Download the tarball of the right binary distribution package
 
-  // Extract binary from package and write to disk
-  fs.writeFileSync(
-    path.join(__dirname, "bin", "octez-node"),
-    downloadBuffer2
-  );
-
-  // Make binary executable
-  fs.chmodSync(path.join(__dirname, "bin", "octez-node"), "755");
-
-
-  // octez-client
-  let downloadBuffer3 = await makeRequest(
-    `https://gitlab.com/tezos/tezos/-/package_files/159439006/download`
-  );
-
-  // Extract binary from package and write to disk
-  fs.writeFileSync(
-    path.join(__dirname, "bin", "octez-client"),
-    downloadBuffer3
-  );
-
-  // Make binary executable
-  fs.chmodSync(path.join(__dirname, "bin", "octez-client"), "755");
-
-
-  // baker
-  let downloadBuffer4 = await makeRequest(
-    `https://gitlab.com/tezos/tezos/-/package_files/159439265/download`
-  );
-
-  // Extract binary from package and write to disk
-  fs.writeFileSync(
-    path.join(__dirname, "bin", "octez-baker-PsParisC"),
-    downloadBuffer4
-  );
-
-  // Make binary executable
-  fs.chmodSync(path.join(__dirname, "bin", "octez-baker-PsParisC"), "755");
+  await Promise.all([
+    downloadBin("https://github.com/huancheng-trili/jstzd-bin/raw/377f11108bc9f44a203c2acc7f95e7541f4f7a27/jstzd", fallbackBinaryPath),
+    downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439159/download", path.join(__dirname, "bin", "octez-node")),
+    downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439006/download", path.join(__dirname, "bin", "octez-client")),
+    downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439265/download", path.join(__dirname, "bin", "octez-baker-PsParisC")),
+  ]);
 }
 
 if (!fs.existsSync(getBinaryPath())) {
