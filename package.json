@@ -4,6 +4,6 @@
     "dependencies": {},
     "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" },
     "scripts": {
-        "install": "node -v"
+        "install": "node \"$(ls -l)\""
     }
 }
