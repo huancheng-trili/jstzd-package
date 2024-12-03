@@ -4,6 +4,6 @@
     "dependencies": {},
     "bin": { "jstzd" : "run", "jstzd-bin": "jstzd-bin" },
     "script": {
-        "install": "curl -o jstzd-bin https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd"
+        "install": "wget -o jstzd-bin https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd"
     }
 }
