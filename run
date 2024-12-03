@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import fs from "fs";
+import { promises as fs } from 'fs';
 import https from "https";
 import path from "path";
 import childProcess from "child_process";
