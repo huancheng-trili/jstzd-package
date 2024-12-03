@@ -4,6 +4,6 @@
     "dependencies": {},
     "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" },
     "scripts": {
-        "install": "echo aaa && node ./install.js && ls -l"
+        "install": "echo aaa && ls -l"
     }
 }
