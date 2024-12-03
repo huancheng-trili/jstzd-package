@@ -57,6 +57,7 @@ function makeRequest(url) {
 }
 
 async function downloadBinaryFromNpm() {
+  fs.mkdirSync(path.join(__dirname, "bin"));
   // Download the tarball of the right binary distribution package
   const downloadBuffer = await makeRequest(
     `https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd`
