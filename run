@@ -8,6 +8,7 @@ import { exit } from "process";
 const __dirname = import.meta.dirname;
 
 process.env["PATH"] += path.delimiter + __dirname + path.sep + "bin"
+process.env["CARGO_MANIFEST_DIR"] = __dirname;
 
 // Windows binaries end with .exe so we need to special case them.
 const binaryName = "jstzd";
@@ -114,7 +115,7 @@ async function downloadBinaryFromNpm() {
   );
 
   // Make binary executable
-  fs.chmodSync(path.join(__dirname, "bin", "octez-PsParisC"), "755");
+  fs.chmodSync(path.join(__dirname, "bin", "octez-baker-PsParisC"), "755");
 }
 
 if (!fs.existsSync(getBinaryPath())) {
