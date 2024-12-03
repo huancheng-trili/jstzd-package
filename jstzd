@@ -4,6 +4,7 @@ import fs from "fs";
 import https from "https";
 import path from "path";
 import childProcess from "child_process";
+const __dirname = import.meta.dirname;
 
 // Windows binaries end with .exe so we need to special case them.
 const binaryName = "jstzd-bin";
