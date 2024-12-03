@@ -1,0 +1,10 @@
+{
+    "name": "jstzd",
+    "version": "0.0.1",
+    "dependencies": {},
+    "bin": { "jstzd" : "./jstzd" },
+    "scripts": {
+        "install": "sh ./download.sh",
+        "postinstall": "sh ./post.sh"
+    }
+}
