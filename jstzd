@@ -72,6 +72,6 @@ if (!fs.existsSync(getBinaryPath())) {
   downloadBinaryFromNpm();
 }
 
-childProcess.execFileSync(getBinaryPath(), args, {
+childProcess.execFileSync(getBinaryPath(), process.argv.slice(2), {
   stdio: "inherit",
 });
