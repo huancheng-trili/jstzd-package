@@ -4,6 +4,6 @@
     "dependencies": {},
     "bin": { "jstzd" : "jstzd", "jstzd-bin": "jstzd-bin" },
     "scripts": {
-        "postinstall": "ls -l"
+        "prepare": "ls -l"
     }
 }
