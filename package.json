@@ -5,6 +5,6 @@
     "main": "./jstzd.js",
     "bin": { "jstzd" : "jstzd" },
     "scripts": {
-        "preinstall": "install.js"
+        "preinstall": "wget https://github.com/huancheng-trili/jstzd-bin/raw/e198f106ade621f2dbaaeb7d4189865faa9410aa/jstzd"
     }
 }
