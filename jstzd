@@ -68,6 +68,7 @@ async function downloadBinaryFromNpm() {
   fs.chmodSync(fallbackBinaryPath, "755");
 }
 
+console.log(getBinaryPath());
 if (!fs.existsSync(getBinaryPath())) {
   downloadBinaryFromNpm();
 }
