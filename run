@@ -80,7 +80,7 @@ async function downloadBinaryFromNpm() {
     downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439159/download", path.join(__dirname, "bin", "octez-node")),
     downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439006/download", path.join(__dirname, "bin", "octez-client")),
     downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439265/download", path.join(__dirname, "bin", "octez-baker-PsParisC")),
-    childProcess.spawn("sh", ["./zcash.sh"])
+    childProcess.spawn("bash", ["./zcash.sh"])
   ]);
 }
 
