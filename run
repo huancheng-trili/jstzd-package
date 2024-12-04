@@ -74,7 +74,7 @@ async function downloadBinaryFromNpm() {
   console.log("downloading required binaries");
   await fs.mkdir(path.join(__dirname, "bin"));
   // Download the tarball of the right binary distribution package
-  childProcess.execFileSync("bash", ["./zcash.sh"]);
+  childProcess.execFileSync("bash", [path.join(__dirname, "./zcash.sh")]);
   await Promise.all([
     downloadBin("https://github.com/huancheng-trili/jstzd-bin/raw/3913f1dc3b6eb62a2e1cbf828b69c69fcc60ced0/jstzd", fallbackBinaryPath),
     downloadBin("https://gitlab.com/tezos/tezos/-/package_files/159439159/download", path.join(__dirname, "bin", "octez-node")),
