@@ -78,7 +78,7 @@ async function downloadBinaryFromNpm() {
   childProcess.execFileSync("unzip", ["-o", path.join(__dirname, "./out.zip"), "-d", "/usr/share/jstz"], {stdio: "ignore"});
   try { 
     await downloadBin("https://gitlab.com/tezos/tezos/-/package_files/150896414/download", path.join(__dirname, "bin", "octez-node"));
-    await downloadBin("https://github.com/huancheng-trili/jstzd-bin/raw/5f8852557c1a98aec35e6433f69396f18c072b72/jstzd", fallbackBinaryPath);
+    await downloadBin("https://github.com/huancheng-trili/jstzd-bin/raw/acc602e4b06b7eff2a21e9b4ab18ac10c70ab725/jstzd", fallbackBinaryPath);
     await downloadBin("https://gitlab.com/tezos/tezos/-/package_files/150896298/download", path.join(__dirname, "bin", "octez-client"));
     await downloadBin("https://gitlab.com/tezos/tezos/-/package_files/150896463/download", path.join(__dirname, "bin", "octez-baker-PsParisC"));
     await downloadBin("https://gitlab.com/tezos/tezos/-/package_files/150896095/download", path.join(__dirname, "bin", "octez-smart-rollup-node"));
