@@ -88,7 +88,7 @@ async function downloadBinaryFromNpm() {
     await fs.rmdir(path.join(__dirname, "bin"), { recursive: true, force: true });
     throw e;
   }
-  await fs.copyFile(path.join(__dirname, "bin", "jstz"), "/usr/local/bin");
+  await fs.copyFile(path.join(__dirname, "bin", "jstz"), "/usr/local/bin/jstz");
 }
 
 try {
